@@ -18,5 +18,41 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // MANUAL USERS
+
+        // \App\Models\User::create([
+        //     'name' => 'Test Customer',
+        //     'email' => 'TestCustomer@test.com',
+        //     'password' => bcrypt('password')
+        // ]);
+
+        // \App\Models\User::create([
+        //     'name' => 'Test Seller',
+        //     'email' => 'TestSeller@test.com',
+        //     'password' => bcrypt('password')
+        // ]);
+
+        // Create 25 users
+        for ($i = 1; $i <= 25; $i++) {
+            \App\Models\User::create([
+                'name' => 'User ' . $i,
+                'email' => 'user' . $i . '@example.com',
+                'password' => bcrypt('password')
+            ]);
+        }
+
+        $this->call([
+            ArticleSeeder::class,
+            CartSeeder::class,
+            CategorySeeder::class,
+            OrderSeeder::class,
+            ReviewSeeder::class,
+            SellerSeeder::class,
+            StockSeeder::class,
+            CustomerSeeder::class,
+            CartDetailSeeder::class,
+            OrderDetailSeeder::class
+        ]);
     }
 }
